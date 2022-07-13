@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/backgoundgradiente"
+    android:fillViewport="true"
+    >
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activivity.MainActivity"
+    >
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/activity_main_ImageView_principal"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/imagem_principal"
+        app:civ_border_width="2dp"
+        app:civ_border_color="@color/white"
+
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/activity_main_Imagebutton_editar"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/activity_main_ImageView_principal"
+        app:layout_constraintTop_toBottomOf="@id/activity_main_ImageView_principal"
+        app:layout_constraintEnd_toEndOf="@id/activity_main_ImageView_principal"
+        android:clickable="true"
+        android:focusable="true"
+        app:backgroundTint="@color/azul_lua3"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_edit"
+        app:tint="@android:color/white"
+
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/activity_main_TextView_saudacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/activity_main_Imagebutton_editar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Olá,"
+       android:layout_marginTop="45dp"
+        android:textSize="22sp"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/white"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingHorizontal="40dp"
+
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/activity_main_TextView_pergunta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/activity_main_TextView_saudacao"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="o que vamos estudar hoje?"
+        android:textSize="16sp"
+        android:layout_margin="5dp"
+
+
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/activity_main_button_Ver_Lista"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="150dp"
+        app:layout_constraintTop_toBottomOf="@id/activity_main_TextView_pergunta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Ver minhas disciplinas"
+        android:background="@drawable/botaocustomizado"
+        android:textColor="@color/white"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/activity_main_button_Adicionar_item"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@id/activity_main_button_Ver_Lista"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Adicionar Disciplina"
+        android:background="@drawable/botaocustomizado"
+        android:textColor="@color/white"
+
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

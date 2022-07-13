@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    android:background="@drawable/backgoundgradiente"
+    android:padding="12dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/Activity_dialog_formulario_confirma_mensagem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/Activity_dialog_formulario_confirma_IconeAviso"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Confirmar a adição de uma nova disciplina?"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_margin="10dp"
+            android:textAlignment="center"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/Activity_dialog_formulario_confirma_IconeAviso"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="@id/Activity_dialog_formulario_confirma_mensagem"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/Activity_dialog_formulario_confirma_mensagem"
+            app:srcCompat="@drawable/ic_aviso"
+            android:layout_marginStart="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/Activity_dialog_formulario_confirma_imagemPrincipal"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/Activity_dialog_formulario_confirma_mensagem"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/imagem_dialogformulario"
+
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

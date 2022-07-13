@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgoundgradiente"
+    android:fillViewport="true">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/backgoundgradiente"
+        tools:context=".ui.activivity.FormularioActivity">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/activity_formulario_TextView_principal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="22dp"
+            android:text="Adicionar Disciplina"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/activity_formulario_Imagem"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="20dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_formulario_TextView_principal"
+            app:srcCompat="@drawable/imagem_padrao"
+
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/activity_formulario_TextInputLayout_nome"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:hintTextColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_formulario_Imagem"
+            app:startIconDrawable="@drawable/ic_disciplina"
+            app:startIconTint="@color/white"
+            app:helperText="Obrigatório*"
+            app:helperTextEnabled="true"
+            app:counterEnabled="true"
+            app:counterMaxLength="30"
+            app:endIconMode="clear_text"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/activity_formulario_EditText_nome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nome da Disciplina"
+                android:inputType="textCapWords"
+                android:maxLength="30"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/activity_formulario_TextInputLayout_descricao"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:helperText="Opcional"
+            app:helperTextEnabled="true"
+            app:hintTextColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@id/activity_formulario_TextInputLayout_nome"
+            app:layout_constraintStart_toStartOf="@id/activity_formulario_TextInputLayout_nome"
+            app:layout_constraintTop_toBottomOf="@id/activity_formulario_TextInputLayout_nome"
+            app:startIconDrawable="@drawable/ic_descricao"
+            app:startIconTint="@color/white"
+            app:endIconMode="clear_text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/activity_formulario_EditText_descricao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Descrição"
+                android:inputType="textCapWords" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/activity_formulario_botao_hora_inicial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/activity_formulario_TextInputLayout_descricao"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Selecionar hora Inicial"
+            style="?attr/materialButtonOutlinedStyle"
+            app:icon="@drawable/ic_time"
+
+            />
+
+        <Button
+            android:id="@+id/activity_formulario_botao_hora_final"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/activity_formulario_botao_hora_inicial"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Selecionar hora final"
+            app:icon="@drawable/ic_time"
+
+            style="?attr/materialButtonOutlinedStyle"
+
+            />
+
+
+
+
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/activity_formulario_Switch_alarme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:checked="false"
+            android:text="Adicionar alarme"
+            app:layout_constraintStart_toStartOf="@id/activity_formulario_TextInputLayout_nome"
+            app:layout_constraintTop_toBottomOf="@id/activity_formulario_botao_hora_final" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/activity_formulario_Botao_Salvar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/botaocustomizado"
+            android:text="Adicionar Disciplina"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_formulario_Switch_alarme"
+            app:layout_constraintVertical_bias="1"
+            android:layout_marginBottom="20dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+

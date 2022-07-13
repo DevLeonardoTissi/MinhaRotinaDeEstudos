@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    android:background="@drawable/backgoundgradiente">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/dialog_editaPerfil_imagem_imageView"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/imagem_padrao"
+            android:scaleType="centerCrop"
+            />
+
+        <Button
+            android:id="@+id/dialog_editaPerfil_botaoCarregar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buscar foto"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/dialog_editaPerfil_botaoTirarFoto"
+            app:layout_constraintTop_toBottomOf="@id/dialog_editaPerfil_imagem_imageView"
+            app:layout_constraintBottom_toBottomOf="@id/dialog_editaPerfil_imagem_imageView"
+            app:icon = "@drawable/ic_seach_photo"
+
+            android:backgroundTint="@color/azul_lua3"
+            android:textColor="@color/white"
+            />
+
+        <Button
+            android:id="@+id/dialog_editaPerfil_botaoTirarFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tirar Foto"
+            app:layout_constraintStart_toEndOf="@id/dialog_editaPerfil_botaoCarregar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dialog_editaPerfil_imagem_imageView"
+            app:layout_constraintBottom_toBottomOf="@id/dialog_editaPerfil_imagem_imageView"
+            app:icon = "@drawable/ic_camera"
+            android:backgroundTint="@color/azul_lua3"
+            android:textColor="@color/white"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dialog_editaPerfil_TextInputLayout_nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dialog_editaPerfil_botaoCarregar"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:startIconDrawable="@drawable/ic_perfil"
+            app:startIconTint="@color/white"
+            app:hintTextColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/dialog_editaPerfil_EditText_nome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Digite eu nome"
+                android:inputType="textCapWords"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

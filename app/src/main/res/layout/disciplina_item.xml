@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="@color/azul_lua2"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/activity_discilpina_item_TextView_nome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:drawableStart="@drawable/ic_disciplina"
+            android:drawablePadding="10dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat_bold"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/activity_discilpina_item_ImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Nome Disciplina" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/activity_discilpina_item_TextView_descricao"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:drawableStart="@drawable/ic_descricao"
+            android:drawablePadding="10dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/activity_discilpina_item_TextView_nome"
+            app:layout_constraintStart_toStartOf="@id/activity_discilpina_item_TextView_nome"
+            app:layout_constraintTop_toBottomOf="@id/activity_discilpina_item_TextView_nome"
+            tools:text="Descrição disciplina" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/activity_discilpina_item_TextView_hora_inicial"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="16dp"
+            android:drawableStart="@drawable/ic_time"
+            android:drawablePadding="10dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@id/activity_discilpina_item_TextView_descricao"
+            app:layout_constraintStart_toStartOf="@id/activity_discilpina_item_TextView_descricao"
+            app:layout_constraintTop_toBottomOf="@id/activity_discilpina_item_TextView_descricao"
+            tools:text="Hora Inicial"
+            android:maxLength="5"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/activity_discilpina_item_TextView_hora_final"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="16dp"
+            android:drawableStart="@drawable/ic_time"
+            android:drawablePadding="10dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/activity_discilpina_item_TextView_hora_inicial"
+            app:layout_constraintStart_toStartOf="@id/activity_discilpina_item_TextView_hora_inicial"
+            app:layout_constraintTop_toBottomOf="@id/activity_discilpina_item_TextView_hora_inicial"
+            tools:text="Hora Final"
+            />
+
+<!--        <androidx.constraintlayout.widget.Guideline-->
+<!--            android:id="@+id/activity_discilpina_item_guideline"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            app:layout_constraintGuide_percent="0.3"-->
+<!--            />-->
+
+        <!--Para definirmos porcentagens, podemos usar a guideline, ou a propriedade weignt
+            que, para atribuirmos 30%, colocamos 3 em uma view, e 7 em outra - nesse caso, iremos usar o contraintWidth-percent -->
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/activity_discilpina_item_ImageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/activity_discilpina_item_TextView_nome"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/imagem_padrao"
+            app:layout_constraintWidth_percent="0.3"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,10 +1,12 @@
 package com.example.organizador.ui.recyclerview.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.organizador.R
@@ -16,16 +18,28 @@ import java.text.NumberFormat
 class ListaDisciplinasAdapter(
 
     private val context : Context,
-    disciplinas: List<Disciplina>
+    disciplinas: List<Disciplina>,
+    var quandoClicaNoItem: (disciplina: Disciplina) -> Unit = {}
 
 ) : RecyclerView.Adapter<ListaDisciplinasAdapter.ViewHolder>() {
 
     private val disciplinas = disciplinas.toMutableList()
 
-    class ViewHolder (private val binding: DisciplinaItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
+   inner class ViewHolder (private val binding: DisciplinaItemBinding) : RecyclerView.ViewHolder(binding.root) {
+
+       private lateinit var disciplina : Disciplina
+
+        init {
+            itemView.setOnClickListener{
+                if (::disciplina.isInitialized){
+                    quandoClicaNoItem(disciplina)
+                }
+            }
+        }
 
         fun vincula(disciplina: Disciplina) {
+            this.disciplina = disciplina
              val nome = binding.activityDiscilpinaItemTextViewNome
                 nome.text = disciplina.nome
 
@@ -48,6 +62,8 @@ class ListaDisciplinasAdapter(
             binding.activityDiscilpinaItemImageView.visibility = visibilidade
 
             binding.activityDiscilpinaItemImageView.tentaCarregarImagem(disciplina.imagem)
+
+
         }
     }
 

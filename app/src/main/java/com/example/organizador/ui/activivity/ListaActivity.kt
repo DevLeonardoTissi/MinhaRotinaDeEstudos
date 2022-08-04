@@ -15,9 +15,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ListaActivity : AppCompatActivity() {
 
-   private var teste :Boolean = true
-   private val dao = DisciplinasDao()
-   private  val adapter = ListaDisciplinasAdapter(this, disciplinas = dao.buscatodos())
+    private var teste: Boolean = true
+    private val dao = DisciplinasDao()
+    private val adapter = ListaDisciplinasAdapter(this, disciplinas = dao.buscatodos())
     private val binding by lazy {
         ActivityListaBinding.inflate(layoutInflater)
     }
@@ -64,6 +64,18 @@ class ListaActivity : AppCompatActivity() {
                 botaotrocalayout.setImageResource(R.drawable.ic_list)
                 teste = false
             }
+
+
+        }
+        adapter.quandoClicaNoItem = { disciplina ->
+            val intent = Intent(
+                this, TelaDetalhesActivity::class.java
+            ).apply {
+                putExtra(CHAVE_DISCIPLINA, disciplina)
+
+            }
+            startActivity(intent)
+
         }
     }
 }

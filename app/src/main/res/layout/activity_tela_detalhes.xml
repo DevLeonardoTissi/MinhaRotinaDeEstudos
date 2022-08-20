@@ -9,10 +9,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".ui.activity.DetalhesProdutoActivity">
+        tools:context=".ui.activity.DetalhesProdutoActivity"
+        android:background="@drawable/backgoundgradiente">
 
         <ImageView
-            android:id="@+id/activity_detalhes_produto_imagem"
+            android:id="@+id/activity_detalhes_disciplina_imagem"
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:contentDescription="Imagem do produto"
@@ -23,62 +24,81 @@
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <TextView
-            android:id="@+id/activity_detalhes_produto_nome"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:textSize="28sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardviewDetelhes"
-            app:layout_constraintVertical_bias="0.0"
-            tools:text="@tools:sample/lorem[10]" />
-
-        <TextView
-            android:id="@+id/activity_detalhes_produto_descricao"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:layout_constraintVertical_bias="0.0"
-            android:gravity="top"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activity_detalhes_produto_nome"
-            tools:text="@tools:sample/lorem/random" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardviewDetelhes"
+            android:id="@+id/activity_detalhes_disciplina_nome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/activity_detalhes_produto_imagem"
+            tools:text="Nome Disciplina"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_detalhes_disciplina_imagem"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_detalhes_produto_imagem"
+            app:layout_constraintTop_toBottomOf="@id/activity_detalhes_disciplina_imagem"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat_bold"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:background="@drawable/plano_de_fundo_arredondado"
+            android:padding="8dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
+
+            />
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:id="@+id/activity_detalhes_disciplina_hora_Inicial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/activity_detalhes_disciplina_nome"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/activity_detalhes_disciplina_hora_final"
+            tools:text="Hora Inicial"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat_bold"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:drawableStart="@drawable/ic_time"
+            android:drawablePadding="10dp"
+
+
+
+            />
+
+        <TextView
+            android:id="@+id/activity_detalhes_disciplina_hora_final"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/activity_detalhes_disciplina_hora_Inicial"
+            app:layout_constraintStart_toEndOf="@id/activity_detalhes_disciplina_hora_Inicial"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Hora Final"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat_bold"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:drawableStart="@drawable/ic_time"
+            android:drawablePadding="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/activity_detalhes_disciplina_descricao"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/activity_detalhes_disciplina_hora_Inicial"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="16dp"
-            >
-            <TextView
-                android:id="@+id/activity_detalhes_produto_valor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:elevation="10dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:padding="8dp"
-                android:textColor="@android:color/holo_green_dark"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                tools:text="R$ 1299,99" />
+            tools:text="@tools:sample/lorem/random"
+            android:gravity="top"
+            android:textSize="20sp"
+            android:fontFamily="@font/montserrat"
 
-        </androidx.cardview.widget.CardView>
-
-
-
+        />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -3,6 +3,7 @@ package com.example.organizador.ui.activivity
 import android.content.Intent
 import android.os.Bundle
 import android.provider.AlarmClock
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -39,9 +40,10 @@ class FormularioActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        binding.activityFormularioImagem.setOnClickListener {
+        val imagem = binding.activityFormularioImagem
+        imagem.setOnClickListener {
             FormularioImagemDialog(this)
-                .mostra (url) { imagem ->
+                .mostra(url) { imagem ->
                     url = imagem
                     binding.activityFormularioImagem.tentaCarregarImagem(url)
                 }
@@ -142,7 +144,7 @@ class FormularioActivity : AppCompatActivity() {
             }
 
 
-            var horaFinal = "Sem horário definido para terminar"
+            var horaFinal = "-"
 
             if (hora_final != null) {
                 horaFinal = if (minuto_final!! < 10) {

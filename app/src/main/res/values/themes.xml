@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">@color/azul_lua</item>
-        <item name="colorOnPrimary">@color/azul_lua2</item>
+        <item name="colorOnPrimary">@color/white</item>
         <item name="colorOnSurface">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/white</item>

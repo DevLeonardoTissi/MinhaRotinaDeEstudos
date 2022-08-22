@@ -1,6 +1,7 @@
 package com.example.organizador.ui.activivity
 
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -40,8 +41,7 @@ class ListaActivity : AppCompatActivity() {
     private fun configuraBotaoTrocaTela() {
         val botaotrocatela = binding.activityListaFloatingActionButton
         botaotrocatela.setOnClickListener {
-            val intent_troca_tela = Intent(this, FormularioActivity::class.java)
-            startActivity(intent_troca_tela)
+            chamaFormulario(this)
         }
     }
 
@@ -72,11 +72,15 @@ class ListaActivity : AppCompatActivity() {
                 this, TelaDetalhesActivity::class.java
             ).apply {
                 putExtra(CHAVE_DISCIPLINA, disciplina)
-
             }
             startActivity(intent)
-
         }
+    }
+
+    private fun chamaFormulario(context: Context){
+        val intentTrocaTela = Intent(context, FormularioActivity::class.java)
+        startActivity(intentTrocaTela)
+
     }
 }
 

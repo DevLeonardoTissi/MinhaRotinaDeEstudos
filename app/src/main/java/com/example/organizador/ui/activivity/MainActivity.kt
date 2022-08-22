@@ -1,6 +1,7 @@
 package com.example.organizador.ui.activivity
 
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -19,7 +20,6 @@ class MainActivity : AppCompatActivity() {
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,23 +30,18 @@ class MainActivity : AppCompatActivity() {
         val botao_edita_perfil = binding.activityMainImagebuttonEditar
         botao_edita_perfil.setOnClickListener {
             configuraperfil()
-
         }
 
 
         val botaoverlista = binding.activityMainButtonVerLista
         botaoverlista.setOnClickListener {
-            val intent_troca_tela_lista = Intent(this, ListaActivity::class.java)
-            startActivity(intent_troca_tela_lista)
-
+            chamaLista(this)
         }
 
         val botaoadicionaritem = binding.activityMainButtonAdicionarItem
         botaoadicionaritem.setOnClickListener {
-            val intent_troca_tela_formulario = Intent(this, FormularioActivity::class.java)
-            startActivity(intent_troca_tela_formulario)
+           chamaFormulario(this)
         }
-
     }
 
     private fun configuraperfil(
@@ -56,13 +51,27 @@ class MainActivity : AppCompatActivity() {
         val botaotirafoto = bindingDialogEditaPerfil.dialogEditaPerfilBotaoTirarFoto
 
 
+//        imagem?.let {
+//            bindingDialogEditaPerfil.dialogEditaPerfilImagemImageView.setImageBitmap(imagem)
+//        }
+//        meuUsuario.foto?.let {
+//            bindingDialogEditaPerfil.dialogEditaPerfilImagemImageView.setImageBitmap(meuUsuario.foto)
+//        }
+
         if (imagem != null) {
             bindingDialogEditaPerfil.dialogEditaPerfilImagemImageView.setImageBitmap(imagem)
+        }else if(meuUsuario.foto != null) {
+            bindingDialogEditaPerfil.dialogEditaPerfilImagemImageView.setImageBitmap(meuUsuario.foto)
         }
 
-        // if(nomeUsuarioDigitado != null){
-        //   bindingDialogEditaPerfil.dialogEditaPerfilEditTextNome.setText(nomeUsuarioDigitado)
-        // }
+        if (nomeUsuarioDigitado != null){
+            bindingDialogEditaPerfil.dialogEditaPerfilEditTextNome.setText(nomeUsuarioDigitado)
+        } else if(meuUsuario.nome != null){
+            bindingDialogEditaPerfil.dialogEditaPerfilEditTextNome.setText(meuUsuario.nome)
+        }
+
+
+
 
         val chamaAlertDialog = AlertDialog.Builder(this)
             .setView(bindingDialogEditaPerfil.root)
@@ -72,14 +81,15 @@ class MainActivity : AppCompatActivity() {
                 if (bindingDialogEditaPerfil.dialogEditaPerfilEditTextNome.text.toString()
                         .trim() != ""
                 ) {
-                    meuUsuario.nome =
-                        bindingDialogEditaPerfil.dialogEditaPerfilEditTextNome.text.toString()
+                    val nomeDigitado = bindingDialogEditaPerfil.dialogEditaPerfilEditTextNome.text.toString()
+                    meuUsuario.alteraNome(nomeDigitado)
+
                     val nomeUsuario = meuUsuario.nome
                     binding.activityMainTextViewSaudacao.text =
                         "Olá, $nomeUsuario"
                 }
                 if (imagem != null) {
-                    meuUsuario.foto = (imagem)
+                    meuUsuario.alteraFoto(imagem)
                     binding.activityMainImageViewPrincipal.setImageBitmap(meuUsuario.foto)
                 }
 
@@ -88,8 +98,9 @@ class MainActivity : AppCompatActivity() {
 
             }
             .show()
-        botaotirafoto.setOnClickListener {
 
+
+        botaotirafoto.setOnClickListener {
             abrirCamera()
             chamaAlertDialog.dismiss()
         }
@@ -104,20 +115,28 @@ class MainActivity : AppCompatActivity() {
 
     private fun abrirGaleria() {
 
-
         val intent = Intent(
             Intent.ACTION_PICK,
             MediaStore.Images.Media.INTERNAL_CONTENT_URI
         )
         startActivityForResult(Intent.createChooser(intent, "Selecione uma imagem"), 2)
-
-
     }
 
 
     private fun MainActivity.abrirCamera() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         startActivityForResult(intent, REQUEST_IMAGE_CAPTURE)
+    }
+
+    private fun chamaFormulario(context: Context){
+        val intentTrocaTela = Intent(context, FormularioActivity::class.java)
+        startActivity(intentTrocaTela)
+
+    }
+
+    private fun chamaLista(context: Context){
+        val intent_troca_tela_lista = Intent(context, ListaActivity::class.java)
+        startActivity(intent_troca_tela_lista)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -130,13 +149,15 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == 2) {
             val uri = data?.data
-            if  (uri!= null){
+            if (uri != null) {
                 val imagemcapturada = MediaStore.Images.Media.getBitmap(this.contentResolver, uri)
                 configuraperfil(imagemcapturada)
             }
         }
     }
+
 }
+
 
 
 

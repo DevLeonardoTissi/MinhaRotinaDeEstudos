@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.organizador.R
 import com.example.organizador.databinding.ActivityListaBinding
 import com.example.organizador.ui.dao.DisciplinasDao
+import com.example.organizador.ui.extensions.trocaTelaFormulario
 import com.example.organizador.ui.recyclerview.adapter.ListaDisciplinasAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -41,7 +42,7 @@ class ListaActivity : AppCompatActivity() {
     private fun configuraBotaoTrocaTela() {
         val botaotrocatela = binding.activityListaFloatingActionButton
         botaotrocatela.setOnClickListener {
-            chamaFormulario(this)
+            trocaTelaFormulario(this)
         }
     }
 
@@ -77,10 +78,6 @@ class ListaActivity : AppCompatActivity() {
         }
     }
 
-    private fun chamaFormulario(context: Context){
-        val intentTrocaTela = Intent(context, FormularioActivity::class.java)
-        startActivity(intentTrocaTela)
 
-    }
 }
 

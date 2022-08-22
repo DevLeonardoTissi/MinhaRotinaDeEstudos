@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.organizador.databinding.ActivityMainBinding
 import com.example.organizador.databinding.DialogEditaperfilBinding
+import com.example.organizador.ui.extensions.trocaTelaFormulario
 import com.example.organizador.ui.model.Usuario
 
 class MainActivity : AppCompatActivity() {
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
         val botaoadicionaritem = binding.activityMainButtonAdicionarItem
         botaoadicionaritem.setOnClickListener {
-           chamaFormulario(this)
+           trocaTelaFormulario(this)
         }
     }
 
@@ -51,26 +52,21 @@ class MainActivity : AppCompatActivity() {
         val botaotirafoto = bindingDialogEditaPerfil.dialogEditaPerfilBotaoTirarFoto
 
 
-//        imagem?.let {
-//            bindingDialogEditaPerfil.dialogEditaPerfilImagemImageView.setImageBitmap(imagem)
-//        }
-//        meuUsuario.foto?.let {
-//            bindingDialogEditaPerfil.dialogEditaPerfilImagemImageView.setImageBitmap(meuUsuario.foto)
-//        }
-
-        if (imagem != null) {
+        imagem?.let {
             bindingDialogEditaPerfil.dialogEditaPerfilImagemImageView.setImageBitmap(imagem)
-        }else if(meuUsuario.foto != null) {
-            bindingDialogEditaPerfil.dialogEditaPerfilImagemImageView.setImageBitmap(meuUsuario.foto)
+        } ?: run {
+            meuUsuario.foto?.let {
+                bindingDialogEditaPerfil.dialogEditaPerfilImagemImageView.setImageBitmap(meuUsuario.foto)
+            }
+
         }
 
-        if (nomeUsuarioDigitado != null){
+
+        nomeUsuarioDigitado?.let {
             bindingDialogEditaPerfil.dialogEditaPerfilEditTextNome.setText(nomeUsuarioDigitado)
-        } else if(meuUsuario.nome != null){
+        } ?: run {
             bindingDialogEditaPerfil.dialogEditaPerfilEditTextNome.setText(meuUsuario.nome)
         }
-
-
 
 
         val chamaAlertDialog = AlertDialog.Builder(this)
@@ -128,11 +124,7 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(intent, REQUEST_IMAGE_CAPTURE)
     }
 
-    private fun chamaFormulario(context: Context){
-        val intentTrocaTela = Intent(context, FormularioActivity::class.java)
-        startActivity(intentTrocaTela)
 
-    }
 
     private fun chamaLista(context: Context){
         val intent_troca_tela_lista = Intent(context, ListaActivity::class.java)

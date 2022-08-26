@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private val meuUsuario = Usuario()
 
+
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         val botaoadicionaritem = binding.activityMainButtonAdicionarItem
         botaoadicionaritem.setOnClickListener {
-           trocaTelaFormulario(this)
+            trocaTelaFormulario(this)
         }
     }
 
@@ -77,14 +78,18 @@ class MainActivity : AppCompatActivity() {
                 if (bindingDialogEditaPerfil.dialogEditaPerfilEditTextNome.text.toString()
                         .trim() != ""
                 ) {
-                    val nomeDigitado = bindingDialogEditaPerfil.dialogEditaPerfilEditTextNome.text.toString()
-                    meuUsuario.alteraNome(nomeDigitado)
+                    val nomeDigitado =
+                        bindingDialogEditaPerfil.dialogEditaPerfilEditTextNome.text.toString()
 
-                    val nomeUsuario = meuUsuario.nome
-                    binding.activityMainTextViewSaudacao.text =
-                        "Olá, $nomeUsuario"
+                    if (nomeDigitado != meuUsuario.nome) {
+                        meuUsuario.alteraNome(nomeDigitado)
+                        binding.activityMainTextViewSaudacao.text =
+                            "Olá, ${meuUsuario.nome}"
+                    }
+
+
                 }
-                if (imagem != null) {
+                imagem?.let {
                     meuUsuario.alteraFoto(imagem)
                     binding.activityMainImageViewPrincipal.setImageBitmap(meuUsuario.foto)
                 }
@@ -125,8 +130,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-    private fun chamaLista(context: Context){
+    private fun chamaLista(context: Context) {
         val intent_troca_tela_lista = Intent(context, ListaActivity::class.java)
         startActivity(intent_troca_tela_lista)
     }
@@ -141,7 +145,7 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == 2) {
             val uri = data?.data
-            if (uri != null) {
+            uri?.let {
                 val imagemcapturada = MediaStore.Images.Media.getBitmap(this.contentResolver, uri)
                 configuraperfil(imagemcapturada)
             }
